@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Register DJ{% endblock %}
+
+{% block content %}
+  <h1>DJ Registration</h1>
+  <form method="POST" onsubmit="return validateForm()">
+    <label for="name">DJ Name:</label>
+    <input type="text" id="name" name="name" required>
+    <span class="error"></span>
+
+    <label for="genre">Music Genre:</label>
+    <input type="text" id="genre" name="genre" required>
+    <span class="error"></span>
+
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio"></textarea>
+
+    <label for="website">Website (Optional):</label>
+    <input type="url" id="website" name="website">
+
+    <script>
+        function validateForm() {
+          // Validate DJ name
+          let name = document.getElementById("name").value;
+          if (name === "") {
+            document.querySelector(".error").textContent = "DJ name is required.";
+            return false;
+          } else {
+            document.querySelector(".error").textContent = "";
+          }
+        
+          // Validate genre
+          let genre = document.getElementById("genre").value;
+          if (genre === "") {
+            document.querySelector(".error").textContent = "Genre is required.";
+            return false;
+          } else {
+            document.querySelector(".error").textContent = "";
+          }
+        
+          return true;
+        }
+    </script>
+    <button type="submit">Register</button>    
+  </form>
+{% endblock %}

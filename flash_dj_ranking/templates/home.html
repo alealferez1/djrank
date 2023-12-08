@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <div class="home-banner">
+    <h1>DJ Ranking</h1>
+    <p>Welcome to the DJ Ranking platform!</p>
+  </div>
+  <div class="home-content">
+    <p><a href="{{ url_for('register_dj') }}">Register as DJ</a></p>
+    <p><a href="{{ url_for('register_voter') }}">Register as Voter</a></p>
+  </div>
+{% endblock %}

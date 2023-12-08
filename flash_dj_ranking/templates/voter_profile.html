@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Voter Profile{% endblock %}
+
+{% block content %}
+  <h1>Voter Profile</h1>
+
+  <div class="voter-info">
+    <h3>{{ voter.name }}</h3>
+    <p>Email: {{ voter.email }}</p>
+    <p>Favorite genres: {{ voter.favorite_genres | join(', ') }}</p>
+  </div>
+
+  <h2>Voting history</h2>
+  <ul>
+    {% for vote in voter.votes %}
+      <li>
+        <a href="{{ url_for('dj_profile', dj_id=vote.dj.id) }}">{{ vote.dj.name }}</a>
+        <span class="voted-on">{{ vote.voted_on | strftime('%Y-%m-%d') }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+<style>
+  .voter-info {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .voted-on {
+    font-style: italic;
+  }
+</style>

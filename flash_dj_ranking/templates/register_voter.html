@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Register Voter{% endblock %}
+
+{% block content %}
+  <h1>Voter Registration</h1>
+  <form method="POST" onsubmit="return validateForm()">
+    <label for="name">Voter Name:</label>
+    <input type="text" id="name" name="name" required>
+    <span class="error"></span>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+    <span class="error"></span>
+
+    <label for="genres">Favorite Music Genres (Optional):</label>
+    <select id="genres" name="genres[]" multiple>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="electronic">Electronic</option>
+      <option value="hip-hop">Hip-Hop</option>
+      <option value="country">Country</option>
+      <option value="reggaeton">Reggaeton</option>
+      <option value="salsa">Salsa</option>
+      <option value="merengue">Merengue</option>
+      <option value="champeta">Champeta</option>
+    </select>
+    <script>
+        function validateForm() {
+          // Validate voter name
+          let name = document.getElementById("name").value;
+          if (name === "") {
+            document.querySelector(".error").textContent = "Voter name is required.";
+            return false;
+          } else {
+            document.querySelector(".error").textContent = "";
+          }
+        
+          // Validate email
+          let email = document.getElementById("email").value;
+          if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            document.querySelector(".error").textContent = "Invalid email address.";
+            return false;
+          } else {
+            document.querySelector(".error").textContent = "";
+          }
+        
+          return true;
+        }
+    </script>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

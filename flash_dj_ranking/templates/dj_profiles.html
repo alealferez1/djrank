@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}DJ Profiles{% endblock %}
+
+{% block content %}
+  <h1>DJ Profiles</h1>
+  <ul>
+    {% for dj in djs %}
+      <li>
+        <div class="dj-profile">
+          <img src="{{ dj.profile_picture_url }}" alt="{{ dj.name }}" class="dj-profile-image">
+          <div class="dj-info">
+            <a href="{{ url_for('dj_profile', dj_id=dj.id) }}">
+              <h3>{{ dj.name }}</h3>
+            </a>
+            <p>{{ dj.bio }}</p>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

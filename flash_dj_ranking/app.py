@@ -27,7 +27,8 @@ try:
 except Exception as e:
     print(e)
 
-
+djs = mongo.db.DJ
+voters = mongo.db.Voter
 
 
 @app.route("/")
